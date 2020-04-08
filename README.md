@@ -21,7 +21,8 @@ https://5618scdg33.execute-api.us-east-1.amazonaws.com/dev/screenshot?template=t
 ```
 
 ### Todo
-- [ ] Add S3 caching
+- [x] Caching in Lambda's memory
+- [x] Caching in S3
 
 ### Author
 
