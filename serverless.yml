@@ -3,6 +3,26 @@ service: serverless-og-images-generator
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    BUCKET_NAME: dynobase-og-images
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:ListBucket'
+      Resource:
+        Fn::Join:
+          - ''
+          - - 'arn:aws:s3:::'
+            - Ref: ImagesCacheBucket
+    - Effect: 'Allow'
+      Action:
+        - 's3:PutObject'
+      Resource:
+        Fn::Join:
+          - ''
+          - - 'arn:aws:s3:::'
+            - Ref: ImagesCacheBucket
+            - '/*'
 
 package:
   exclude:
@@ -37,3 +57,11 @@ layers:
   chrome:
     package:
       artifact: layer/chrome.zip    
+
+resources:
+  Resources:
+    ImagesCacheBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: dynobase-og-images
+        AccessControl: PublicRead

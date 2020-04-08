@@ -8,6 +8,7 @@
     "serverless-apigwy-binary": "1.0.0"
   },
   "devDependencies": {
+    "aws-sdk": "^2.656.0",
     "chrome-aws-lambda": "^1.20.3",
     "puppeteer-core": "2.1.1"
   },

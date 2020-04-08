@@ -1,8 +1,37 @@
 'use strict';
 const chromium = require('chrome-aws-lambda');
 const path = require('path');
+const { S3 } = require('aws-sdk');
 const puppeteer = chromium.puppeteer;
 const cache = {};
+
+const returnImageFromS3 = async (key) => {
+  const params = {
+    Bucket: process.env.BUCKET_NAME,
+    Key: key,
+  };
+
+  try {
+    const item = await s3.getObject(params).promise();
+    return item.Body;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+const saveImageToS3 = async (buffer, key) => {
+  const params = {
+    Bucket: process.env.BUCKET_NAME,
+    Key: key,
+    Body: buffer,
+  };
+
+  try {
+    await s3.upload(params).promise();
+  } catch (error) {
+    console.error('Failed to upload image to S3', { error });
+  }
+};
 
 module.exports.index = async (event, context) => {
   let browser = null;
@@ -16,6 +45,20 @@ module.exports.index = async (event, context) => {
     return {
       statusCode: 200,
       body: cache[queryString],
+      headers: {
+        'Content-Type': 'image/png',
+      },
+      isBase64Encoded: true,
+    };
+  }
+
+  const s3Key = `${event.queryStringParameters.title}-${template}`;
+  const s3Item = await returnImageFromS3(s3Key);
+
+  if (s3Item) {
+    return {
+      statusCode: 200,
+      body: s3Item,
       headers: {
         'Content-Type': 'image/png',
       },
@@ -40,6 +83,8 @@ module.exports.index = async (event, context) => {
     });
 
     cache[queryString] = image;
+
+    await saveImageToS3(image, s3Key);
 
     return {
       statusCode: 200,
