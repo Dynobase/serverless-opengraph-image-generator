@@ -4,6 +4,7 @@ const path = require('path');
 const { S3 } = require('aws-sdk');
 const puppeteer = chromium.puppeteer;
 const cache = {};
+const s3 = new S3();
 
 const returnImageFromS3 = async (key) => {
   const params = {
