@@ -20,6 +20,9 @@ By default, Puppeteer will render `index.html` file but you can also use `templa
 https://5618scdg33.execute-api.us-east-1.amazonaws.com/dev/screenshot?template=twiddb.html?title=ANOTHER%20TEMPLATE
 ```
 
+### Todo
+- [ ] Add S3 caching
+
 ### Author
 
 👤 **Dynobase**
