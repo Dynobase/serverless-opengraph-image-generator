@@ -1,0 +1,28 @@
+{
+  "name": "serverless-opengraph-image-generator",
+  "version": "0.1.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "serverless-apigw-binary": "0.4.4",
+    "serverless-apigwy-binary": "0.1.0"
+  },
+  "devDependencies": {
+    "chrome-aws-lambda": "^1.20.3",
+    "puppeteer-core": "2.1.1"
+  },
+  "scripts": {
+    "predeploy": "./download-latest.sh",
+    "deploy": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dynobase/serverless-opengraph-image-generator.git"
+  },
+  "author": "Rafal Wilinski <rafal@dynobase.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dynobase/serverless-opengraph-image-generator/issues"
+  },
+  "homepage": "https://github.com/dynobase/serverless-opengraph-image-generator#readme"
+}

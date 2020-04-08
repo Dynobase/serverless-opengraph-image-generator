@@ -1,0 +1,39 @@
+service: serverless-og-images-generator
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+package:
+  exclude:
+    - layer/**
+    - chrome-aws-lambda/**
+    - node_modules/chrome-aws-lambda/**
+  include:
+    index.html
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+
+functions:
+  og-image-generator:
+    handler: handler.index
+    timeout: 30
+    memorySize: 2048
+    events:
+      - http:
+          method: GET
+          path: /og-image
+    layers:
+      - { Ref: ChromeLambdaLayer }
+
+layers:
+  chrome:
+    package:
+      artifact: layer/chrome.zip    
