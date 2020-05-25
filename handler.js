@@ -42,6 +42,13 @@ module.exports.index = async (event, context) => {
     .join('&');
   const url = path.join('file://', __dirname, `${template}?${queryString}`);
 
+  const width = event.queryStringParameters.width
+    ? parseInt(event.queryStringParameters.width, 10)
+    : 1200;
+  const height = event.queryStringParameters.height
+    ? parseInt(event.queryStringParameters.height, 10)
+    : 630;
+
   if (cache[queryString]) {
     return {
       statusCode: 200,
@@ -69,7 +76,7 @@ module.exports.index = async (event, context) => {
 
   try {
     browser = await puppeteer.launch({
-      defaultViewport: { width: 1200, height: 630 },
+      defaultViewport: { width, height },
       headless: true,
       executablePath: await chromium.executablePath,
       args: chromium.args,
@@ -79,7 +86,7 @@ module.exports.index = async (event, context) => {
     await page.goto(url);
 
     const image = await page.screenshot({
-      clip: { x: 0, y: 0, width: 1200, height: 630 },
+      clip: { x: 0, y: 0, width, height },
       encoding: 'base64',
     });
 

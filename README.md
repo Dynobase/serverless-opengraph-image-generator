@@ -8,7 +8,7 @@
 
 2. Run:
 ```sh
-npm predeploy # Will clone latest chromium and zip it for AWS Lambda Layer
+yarn predeploy # Will clone latest chromium and zip it for AWS Lambda Layer
 sls deploy # Deploy Serverless stack and push Lambda layer with Puppeteer
 
 curl <DEPLOYED_ENDPOINT>?title=This is awesome!

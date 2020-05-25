@@ -17,14 +17,27 @@
       <h1
         style="
           margin-top: 0;
-          font-size: 4em;
+          font-size: 5em;
           padding-left: 60px;
           padding-right: 60px;
           text-align: center;
-          margin-top: 30px;
+          margin-top: 55px;
+          margin-bottom: 0;
         "
       >
-        This week in DynamoDB Issue #6
+        This week in DynamoDB
+      </h1>
+      <h1
+        id="issue"
+        style="
+          margin-top: 0;
+          font-size: 5em;
+          padding-left: 60px;
+          padding-right: 60px;
+          text-align: center;
+        "
+      >
+        Issue #13
       </h1>
       <div style="display: flex; flex-direction: row;">
         <svg
@@ -70,9 +83,8 @@
           queryDict[item.split('=')[0]] = decodeURIComponent(item.split('=')[1]);
         });
 
-      const title = document.getElementsByTagName('h1')[0];
-      title.innerText = queryDict.title;
-      title.style.fontSize = queryDict.fontSize;
+      const issue = document.getElementById('issue');
+      issue.innerText = 'Issue #' + queryDict.issue;
     </script>
     <style>
       html,
