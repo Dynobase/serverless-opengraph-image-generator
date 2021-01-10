@@ -26,7 +26,7 @@ https://5618scdg33.execute-api.us-east-1.amazonaws.com/dev/screenshot?template=t
 
 ### Author
 
-👤 **Dynobase**
+👤 [**Dynobase**](https://dynobase.dev)
 
 - Twitter: [@Dynobase](https://twitter.com/dynobase)
 - Github: [@Dynobase](https://github.com/Dynobase)
