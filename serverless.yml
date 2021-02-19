@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   environment:
-    BUCKET_NAME: dynobase-og-images
+    BUCKET_NAME: grinta-og-images
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
@@ -56,12 +56,12 @@ functions:
 layers:
   chrome:
     package:
-      artifact: layer/chrome.zip    
+      artifact: layer/chrome.zip
 
 resources:
   Resources:
     ImagesCacheBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: dynobase-og-images
+        BucketName: grinta-og-images
         AccessControl: PublicRead
