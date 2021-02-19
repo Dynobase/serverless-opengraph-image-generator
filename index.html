@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Template</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div
@@ -47,7 +48,7 @@
           ></path>
         </g>
       </svg>
-      <p style="font-weight: 700; margin-top: 6px; font-size: 1.2em; margin-left: 5px;">Dynobase</p>
+      <p style="font-weight: 700; margin-top: 6px; font-size: 1.2em; margin-left: 5px;">Grinta</p>
     </div>
     <div
       style="
@@ -82,20 +83,8 @@
 
       const title = document.getElementsByTagName('h1')[0];
 
-      title.innerText = queryDict.title;
+      title.innerText = queryDict.title.toUpperCase();
       title.style.fontSize = queryDict.fontSize;
     </script>
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        font-family: Helvetica, sans-serif;
-        color: white;
-        background-color: #0080ff;
-      }
-    </style>
   </body>
 </html>

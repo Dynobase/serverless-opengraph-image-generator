@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Kapra Neue";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Kapra Neue SemiBold"),
+    url("./fonts/KapraNeue-SemiBold.woff2") format("woff2"),
+    url("./fonts/KapraNeue-SemiBold.woff") format("woff"),
+    url("./fonts/KapraNeue-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Kapra Neue, sans-serif;
+  color: white;
+  background-color: #1B2D37;
+}
